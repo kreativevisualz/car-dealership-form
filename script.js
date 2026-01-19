@@ -79,7 +79,7 @@ document.getElementById('multiStepForm').addEventListener('submit', function (e)
 
   // 3. Send the data to your Google Apps Script
   // REPLACE THE URL BELOW WITH YOUR ACTUAL DEPLOYMENT URL
-  const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxq4VhAFa9QZxHsJKlBxvxjYpEs-BDw1fzBsfBjl-YuMeEm9bYEtZXgfUNiMqjStAPk/exec';
+  const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx2BfTGtaq5WtXDuQP8kA0lX4PLlaK2q26jpSNf3VEEDwur1oMPH9ztv84d7pOatZEi/exec';
 
   fetch(GOOGLE_SCRIPT_URL, {
     method: 'POST',
