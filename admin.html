@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="mainstyle.css">
+  <link rel="stylesheet" href="adminstyle.css">
+</head>
+<body>
+  <header class="header">
+    <h1 class="Title">Car Dealership Admin</h1>
+    <p class="warningtext">Employees Only – Authorised Access</p>
+  </header>
+
+  <div class="container admin-page">
+    <h2>Recent Client Submissions</h2>
+    <p class="admin-note">Previewing first 15 clients from Google Sheet</p>
+
+   <table id="adminTable" class="admin-table">
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Full Names</th>
+      <th>Cellphone</th>
+      <th>Marital Status</th>
+      <th>Occupation</th>
+      <th>Gross Income</th>
+    </tr>
+  </thead>
+  <tbody></tbody>
+</table>
+ </div>
+
+    <a href="https://docs.google.com/spreadsheets/d/1qyWce7LiP8zFbHfc5uBoZdcjvF0Eh-e7E7Dp-6XHkm8/edit?usp=sharing" target="_blank" class="sheet-button">
+        Open Full Google Sheet
+    </a>
+
+
+  <footer class="footer">
+    <div class="footer-content">
+      <p class="footer-brand">© 2026 Car Dealership System</p>
+      <p class="footer-note">Secure • Confidential • Authorised Access Only</p>
+    </div>
+  </footer>
+
+  <script src="admin.js"></script>
+</body>
+</html>

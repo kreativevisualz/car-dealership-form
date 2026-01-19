@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Customer Information Capture</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="mainstyle.css">
+</head>
+<body>
+
+<header class="header">
+  <h1 class="Title">Car Dealership</h1>
+  <p class="warningtext">Authorised Use Only!</p>
+  <p class="requirementtext">Please complete all the required details to complete your Vehicle Purchase</p>
+</header>
+
+<div class="container">
+  <div class="progress">
+    <div class="progress-track"></div>
+    <div class="progress-dots">
+      <span class="dot active"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+    </div>
+    <span id="progressText">Step 1 of 7</span>
+  </div>
+
+  <form id="multiStepForm">
+
+    <!-- INTRO STEP -->
+<div class="step active" id="introStep">
+  <h2>Welcome to the Vehicle Application Portal</h2>
+  <p class="intro-text">
+    This secure form is designed to capture the information required to process your vehicle application efficiently and confidentially.
+  </p>
+  <p class="intro-text">
+    Please ensure all details are accurate and complete before proceeding.
+  </p>
+
+  <div class="buttons.center">
+    <span></span>
+    <button type="button" onclick="nextStep()">Start Application</button>
+  </div>
+</div>
+
+
+<!-- STEP 1 -->
+<div class="step">
+  <h2>Personal Information</h2>
+
+  <div class="field-group">
+    <label>Full Names</label>
+    <input type="text" name="Full Names" required>
+  </div>
+
+  <div class="field-group">
+    <label>ID Number</label>
+    <input type="text" name="ID Number" required>
+  </div>
+
+  <div class="field-group">
+    <label>Cellphone</label>
+    <input type="tel" name="Cellphone" required>
+  </div>
+
+  <div class="field-group">
+    <label>Marital Status</label>
+    <select id="maritalStatus" name="Marital Status" required>
+      <option value="">Select</option>
+      <option value="Single">Single</option>
+      <option value="Married">Married</option>
+      <option value="Divorced">Divorced</option>
+      <option value="Widowed">Widowed</option>
+    </select>
+  </div>
+
+  <div class="field-group hidden" id="marriageDateGroup">
+    <label>Date Married</label>
+    <input type="date" name="Date Married">
+  </div>
+
+  <div class="field-group">
+    <label>Residential Address</label>
+    <input type="text" name="Address" required>
+  </div>
+
+  <div class="buttons">
+    <span></span>
+    <button type="button" onclick="nextStep()">Next</button>
+  </div>
+</div>
+
+<!-- STEP 2 -->
+<div class="step">
+  <h2>Next of Kin</h2>
+
+  <div class="field-group">
+    <label>Full Names</label>
+    <input type="text" name="NOK Full Names" required>
+  </div>
+
+  <div class="field-group">
+    <label>Relationship</label>
+    <input type="text" name="NOK Relationship" required>
+  </div>
+
+  <div class="field-group">
+    <label>Cellphone</label>
+    <input type="tel" name="NOK Cellphone" required>
+  </div>
+
+  <div class="field-group">
+    <label>Address</label>
+    <input type="text" name="NOK Address" required>
+  </div>
+
+  <div class="buttons">
+    <button type="button" class="secondary" onclick="prevStep()">Back</button>
+    <button type="button" onclick="nextStep()">Next</button>
+  </div>
+</div>
+
+<!-- STEP 3 -->
+<div class="step">
+  <h2>Employment Information</h2>
+
+  <div class="field-group">
+    <label>Employer Name</label>
+    <input type="text" name="Employer" required>
+  </div>
+
+  <div class="field-group">
+    <label>Employer Address</label>
+    <input type="text" name="Employer Address" required>
+  </div>
+
+  <div class="field-group">
+    <label>Employer Telephone</label>
+    <input type="tel" name="Employer Tel" required>
+  </div>
+
+  <div class="field-group">
+    <label>Occupation</label>
+    <input type="text" name="Occupation" required>
+  </div>
+
+  <div class="field-group">
+    <label>Years Employed</label>
+    <input type="number" min="0" name="Years Employed" required>
+  </div>
+
+  <div class="field-group">
+    <label>Salary Payment Date</label>
+    <input type="date" name="Salary Date" required>
+  </div>
+
+  <div class="buttons">
+    <button type="button" class="secondary" onclick="prevStep()">Back</button>
+    <button type="button" onclick="nextStep()">Next</button>
+  </div>
+</div>
+
+<!-- STEP 4 -->
+<div class="step">
+  <h2>Income Information</h2>
+
+  <div class="field-group">
+    <label>Gross Income (R)</label>
+    <input type="number" min="0" name="Gross Income" required>
+  </div>
+
+  <div class="field-group">
+    <label>Nett Income (R)</label>
+    <input type="number" min="0" name="Nett Income" required>
+  </div>
+
+  <div class="field-group">
+    <label>Car Allowance (R)</label>
+    <input type="number" min="0" name="Car Allowance">
+  </div>
+
+  <div class="buttons">
+    <button type="button" class="secondary" onclick="prevStep()">Back</button>
+    <button type="button" onclick="nextStep()">Next</button>
+  </div>
+</div>
+
+<!-- STEP 5 -->
+<div class="step">
+  <h2>Bank Details</h2>
+
+  <div class="field-group">
+    <label>Bank Name</label>
+    <input type="text" name="Bank Name" required>
+  </div>
+
+  <div class="field-group">
+    <label>Account Type</label>
+    <select name="Account Type" required>
+      <option value="">Select</option>
+      <option value="Savings">Savings</option>
+      <option value="Cheque">Cheque</option>
+      <option value="Transmission">Transmission</option>
+    </select>
+  </div>
+
+  <div class="field-group">
+    <label>Account Number</label>
+    <input type="text" name="Account Number" required>
+  </div>
+
+  <div class="buttons">
+    <button type="button" class="secondary" onclick="prevStep()">Back</button>
+    <button type="button" onclick="nextStep()">Next</button>
+  </div>
+</div>
+
+<!-- STEP 6 -->
+<div class="step">
+  <h2>Existing Financial Obligations</h2>
+
+  <div class="field-group">
+    <label>Bond Holder</label>
+    <input type="text" name="Bond Holder">
+  </div>
+
+  <div class="field-group">
+    <label>Bond Bank</label>
+    <input type="text" name="Bond Bank">
+  </div>
+
+  <div class="field-group">
+    <label>Bond Installment (R)</label>
+    <input type="number" min="0" name="Bond Installment">
+  </div>
+
+  <div class="field-group">
+    <label>Loan (R)</label>
+    <input type="number" min="0" name="Loan">
+  </div>
+
+  <div class="field-group">
+    <label>Clothing Account (R)</label>
+    <input type="number" min="0" name="Clothing Account">
+  </div>
+
+  <div class="buttons">
+    <button type="button" class="secondary" onclick="prevStep()">Back</button>
+    <button type="button" onclick="nextStep()">Next</button>
+  </div>
+</div>
+
+<!-- STEP 7 -->
+<div class="step">
+  <h2>Monthly Expenses</h2>
+
+  <div class="field-group">
+    <label>Bond / Rent (R)</label>
+    <input type="number" min="0" name="Bond/Rent">
+  </div>
+
+  <div class="field-group">
+    <label>Vehicle Installment (R)</label>
+    <input type="number" min="0" name="Vehicle Installment">
+  </div>
+
+  <div class="field-group">
+    <label>Credit Cards (R)</label>
+    <input type="number" min="0" name="Credit Cards">
+  </div>
+
+  <div class="field-group">
+    <label>Personal Loans (R)</label>
+    <input type="number" min="0" name="Personal Loans">
+  </div>
+
+  <div class="field-group">
+    <label>Furniture Account (R)</label>
+    <input type="number" min="0" name="Furniture Account">
+  </div>
+
+  <div class="field-group">
+    <label>Clothing Account (R)</label>
+    <input type="number" min="0" name="Clothing Account">
+  </div>
+
+  <div class="field-group">
+    <label>Groceries (R)</label>
+    <input type="number" min="0" name="Groceries">
+  </div>
+
+  <div class="field-group">
+    <label>Overdraft (R)</label>
+    <input type="number" min="0" name="Overdraft">
+  </div>
+
+  <div class="field-group">
+    <label>Telephone Repayment (R)</label>
+    <input type="number" min="0" name="Telephone Repayment">
+  </div>
+
+  <div class="buttons">
+    <button type="button" class="secondary" onclick="prevStep()">Back</button>
+    <button type="button" onclick="submitForm()">Submit Application</button>
+  </div>
+</div>
+
+
+    <!-- SUCCESS STEP -->
+<div class="step" id="successStep">
+  <h2>Application Submitted Successfully</h2>
+  <p class="intro-text">
+    Thank you. Your information has been securely submitted and will be reviewed by our sales team.
+  </p>
+  <p class="intro-text">
+    A consultant will contact you shortly to continue your vehicle purchase process.
+  </p>
+
+  <div class="buttons.center">
+    <span></span>
+    <button type="button" onclick="resetForm()">Start New Application</button>
+  </div>
+</div>
+
+
+  </form>
+</div>
+
+<footer class="footer">
+  <div class="footer-content">
+    <p class="footer-brand">© 2026 Car Dealership System</p>
+    <p class="footer-note">Secure • Confidential • Authorised Access Only</p>
+
+  </br>
+    <p class="footer-credit">Powered by Kreative Visualz</p>
+
+<!-- Employees Only Button -->
+<div class="admin-access">
+  <button id="adminButton" type="button">Employee Access Only</button>
+</div>
+
+<!-- Admin Login Modal -->
+<div id="adminModal" class="modal">
+  <div class="modal-content">
+    <h3>Authorized Access Only</h3>
+    <p>This section is for employees only. Unauthorized access is prohibited.</p>
+    <input type="password" id="adminPasswordInput" placeholder="Enter password">
+    <div class="modal-buttons">
+      <button id="cancelAdmin">Cancel</button>
+      <button type="button" id="loginAdmin">Login</button>
+    </div>
+    <p id="adminError" class="error-text hidden">Incorrect password. Try again.</p>
+  </div>
+</div>
+
+
+  </div>
+</footer>
+
+
+<script src="script.js"></script>
+</body>
+</html>

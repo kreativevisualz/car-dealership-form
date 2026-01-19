@@ -1,0 +1,513 @@
+/* ===================== GLOBAL ===================== */
+* {
+  box-sizing: border-box;
+  font-family: "Inter", "Poppins", Arial, sans-serif;
+}
+
+body {
+  margin: 0;
+  background: radial-gradient(circle at top, #111 0%, #000 100%);
+  color: #eaeaea;
+}
+
+/* ===================== HEADER ===================== */
+.header {
+  background: linear-gradient(135deg, #0d0d0d, #1c1c1c);
+  color: #ffffff;
+  padding: 32px 20px 26px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
+
+.header .Title {
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin: 0 0 8px;
+  text-transform: uppercase;
+}
+
+.header .warningtext {
+  display: inline-block;
+  background: rgba(255, 215, 0, 0.15);
+  color: #ffd700;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin: 0 0 12px;
+}
+
+.header .requirementtext {
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.75);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.5;
+}
+
+/* ===================== CONTAINER ===================== */
+.container {
+  background: linear-gradient(145deg, #121212, #1b1b1b);
+  border-radius: 18px;
+  padding: 30px 24px 36px;
+  margin: 40px auto;
+  max-width: 720px;
+  box-shadow:
+    0 20px 40px rgba(0, 0, 0, 0.7),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.intro-text {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #ccc;
+  margin-bottom: 1.2rem;
+  max-width: 600px;
+}
+
+
+/* ===================== PROGRESS BAR ===================== */
+.progress {
+  margin-bottom: 28px;
+  text-align: center;
+}
+
+.progress-dots {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+/* Connecting line */
+.progress-dots::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 6px;
+  right: 6px;
+  height: 2px;
+  background: linear-gradient(to right, #333, #666);
+  transform: translateY(-50%);
+  z-index: 0;
+}
+
+/* Dots */
+.progress-dots .dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #222;
+  border: 2px solid #555;
+  z-index: 1;
+  transition: all 0.3s ease;
+}
+
+/* Active / completed dots */
+.progress-dots .dot.active {
+  background: linear-gradient(135deg, #ffd700, #ffb700);
+  border-color: #ffcc00;
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.6);
+}
+
+#progressText {
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  color: #bbb;
+}
+
+/* ===================== FORM STEPS ===================== */
+.step {
+  display: none;
+}
+
+.step.active {
+  display: block;
+}
+
+h2 {
+  font-size: 1.35rem;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  margin-bottom: 20px;
+  color: #ffffff;
+}
+
+/* ===================== FORM FIELDS ===================== */
+.field-group {
+  margin-bottom: 16px;
+}
+
+.field-group label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #cfcfcf;
+  letter-spacing: 0.3px;
+  margin-bottom: 6px;
+  display: block;
+}
+
+.field-group input,
+.field-group select {
+  width: 100%;
+  background: linear-gradient(145deg, #1a1a1a, #101010);
+  border: 1px solid #333;
+  color: #ffffff;
+  padding: 12px 14px;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  transition: all 0.25s ease;
+  box-shadow:
+    inset 0 1px 2px rgba(0, 0, 0, 0.8),
+    0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+/* Focus state */
+.field-group input:focus,
+.field-group select:focus {
+  outline: none;
+  border-color: #ffd700;
+  box-shadow:
+    0 0 0 2px rgba(255, 215, 0, 0.2),
+    inset 0 1px 2px rgba(0, 0, 0, 0.9);
+}
+
+/* Dropdown arrow styling */
+.field-group select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image:
+    linear-gradient(45deg, transparent 50%, #ffd700 50%),
+    linear-gradient(135deg, #ffd700 50%, transparent 50%),
+    linear-gradient(to right, #333, #333);
+  background-position:
+    calc(100% - 20px) calc(1em + 2px),
+    calc(100% - 15px) calc(1em + 2px),
+    calc(100% - 2.5em) 0.6em;
+  background-size:
+    5px 5px,
+    5px 5px,
+    1px 1.6em;
+  background-repeat: no-repeat;
+}
+
+.field-group select option {
+  background: #111;
+  color: #fff;
+}
+
+/* ===================== BUTTONS ===================== */
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 24px;
+}
+
+button {
+  background: linear-gradient(135deg, #ffd700, #ffb700);
+  color: #111;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  padding: 12px 28px;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  box-shadow:
+    0 8px 18px rgba(255, 215, 0, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  transition: all 0.25s ease;
+}
+
+button:hover {
+  transform: translateY(-1px);
+  box-shadow:
+    0 12px 22px rgba(255, 215, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7);
+}
+
+button:active {
+  transform: translateY(0);
+  box-shadow:
+    0 6px 12px rgba(255, 215, 0, 0.3),
+    inset 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+button.secondary {
+  background: linear-gradient(135deg, #444, #222);
+  color: #fff;
+  box-shadow:
+    0 6px 14px rgba(0, 0, 0, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+button.secondary:hover {
+  box-shadow:
+    0 10px 18px rgba(0, 0, 0, 0.8),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+/* Footer */
+.footer {
+  margin-top: 3rem;
+  padding: 1.5rem 1rem;
+  background: linear-gradient(135deg, #0f1220, #151a2e);
+  border-top: 1px solid rgba(255,255,255,0.08);
+  text-align: center;
+}
+
+.footer-content {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.footer-brand {
+  font-size: 0.9rem;
+  color: #f5c16c;
+  margin: 0;
+  letter-spacing: 0.5px;
+}
+
+.footer-note {
+  font-size: 0.75rem;
+  color: #aaa;
+  margin-top: 0.4rem;
+}
+
+/* Intro & Success Screens */
+#introStep,
+#successStep {
+  text-align: center;
+  padding: 2rem 1rem;
+}
+
+.intro-text {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #ccc;
+  margin: 0.8rem auto;
+  max-width: 600px;
+}
+
+/* Center buttons for intro & outro */
+.buttons.center {
+  justify-content: center;
+}
+
+
+/* ===================== UTILITIES ===================== */
+.hidden {
+  display: none;
+}
+
+/* ===================== SUBTLE ANIMATIONS & POLISH ===================== */
+
+/* Fade-in for each step */
+.step {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.step.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Input & select hover/focus subtle glow */
+.field-group input:focus,
+.field-group select:focus {
+  box-shadow:
+    0 0 8px rgba(255, 215, 0, 0.25),
+    0 1px 2px rgba(0, 0, 0, 0.9);
+  transition: all 0.25s ease;
+}
+
+/* Smooth progress dot pulse for active */
+.progress-dots .dot.active {
+  animation: pulseDot 1.2s infinite alternate;
+}
+
+@keyframes pulseDot {
+  0% { box-shadow: 0 0 6px rgba(255, 215, 0, 0.5); transform: scale(1); }
+  100% { box-shadow: 0 0 12px rgba(255, 215, 0, 0.8); transform: scale(1.2); }
+}
+
+/* Progress track hover effect */
+.progress-dots::before {
+  transition: background 0.3s ease;
+}
+
+.progress:hover::before {
+  background: linear-gradient(to right, #444, #ffd700);
+}
+
+/* Button subtle shine animation */
+button {
+  position: relative;
+  overflow: hidden;
+}
+
+button::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.3) 10%, transparent 50%);
+  transform: scale(0);
+  transition: transform 0.5s ease;
+  border-radius: 50%;
+}
+
+button:hover::after {
+  transform: scale(1);
+}
+
+/* Intro / Success screen subtle fade-up for text */
+#introStep h2,
+#successStep h2,
+.intro-text {
+  opacity: 0;
+  transform: translateY(15px);
+  animation: fadeUp 0.6s forwards;
+}
+
+#introStep.active h2,
+#introStep.active .intro-text,
+#successStep.active h2,
+#successStep.active .intro-text {
+  animation-delay: 0.2s;
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Container subtle hover lift (adds depth) */
+.container:hover {
+  box-shadow:
+    0 25px 50px rgba(0, 0, 0, 0.7),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  transition: box-shadow 0.4s ease;
+}
+
+/* Footer small fade-in on page load */
+.footer {
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fadeUp 0.8s forwards;
+  animation-delay: 0.3s;
+}
+
+/* Smooth scrolling for the whole page */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Admin Button aligned left */
+.admin-access {
+  text-align: left;
+  margin-bottom: 1.5rem;
+}
+
+#adminButton {
+  background: linear-gradient(135deg, #ffcc00, #ffb700);
+  color: #111;
+  font-weight: 700;
+  padding: 10px 22px;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 6px 16px rgba(255, 215, 0, 0.4);
+  transition: all 0.25s ease;
+}
+
+#adminButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(255, 215, 0, 0.6);
+}
+
+/* Modal hidden by default */
+.modal {
+  display: none; /* FIX: initially hidden */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.75);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: linear-gradient(145deg, #1b1b1b, #121212);
+  padding: 2rem 2.5rem;
+  border-radius: 16px;
+  max-width: 380px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 12px 32px rgba(0,0,0,0.7);
+}
+
+.modal-content h3 {
+  margin-bottom: 1rem;
+  color: #ffd700;
+}
+
+.modal-content p {
+  font-size: 0.9rem;
+  color: #ccc;
+  margin-bottom: 1rem;
+}
+
+.modal-content input {
+  width: 100%;
+  padding: 10px 14px;
+  margin-bottom: 1rem;
+  border-radius: 10px;
+  border: 1px solid #333;
+  background: #1a1a1a;
+  color: #fff;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.modal-buttons button {
+  flex: 1;
+  margin: 0 4px;
+  padding: 10px;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+}
+
+#cancelAdmin {
+  background: linear-gradient(135deg, #444, #222);
+  color: #fff;
+}
+
+#loginAdmin {
+  background: linear-gradient(135deg, #ffd700, #ffb700);
+  color: #111;
+  font-weight: 700;
+}
+
+.error-text {
+  color: #ff4d4d;
+  font-size: 0.85rem;
+  margin-top: 0.6rem;
+}

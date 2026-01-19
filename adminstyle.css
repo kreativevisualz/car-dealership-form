@@ -1,0 +1,119 @@
+/* ===================== ADMIN PAGE ===================== */
+.admin-page {
+  background: linear-gradient(145deg, #101010, #1a1a1a);
+  border-radius: 16px;
+  padding: 30px 24px 60px; /* extra bottom space for footer */
+  margin: 40px auto;
+  max-width: 900px;
+  box-shadow: 
+    0 25px 50px rgba(0, 0, 0, 0.7),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+/* Page Heading */
+.admin-page h2 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #ffd700;
+  margin-bottom: 12px;
+  text-align: center;
+  text-shadow: 0 2px 4px rgba(255, 215, 0, 0.3);
+}
+
+.admin-note {
+  font-size: 0.9rem;
+  color: #ccc;
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+/* ===================== TABLE ===================== */
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #111;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+}
+
+.admin-table th,
+.admin-table td {
+  padding: 14px 12px;
+  text-align: left;
+  font-size: 0.9rem;
+  color: #eaeaea;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.admin-table th {
+  background: linear-gradient(135deg, #222, #111);
+  color: #ffd700;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.admin-table tr:nth-child(even) {
+  background: rgba(255, 215, 0, 0.03);
+}
+
+.admin-table tr:hover {
+  background: rgba(255, 215, 0, 0.1);
+  transform: scale(1.01);
+  transition: all 0.2s ease-in-out;
+}
+
+.sheet-button {
+  display: inline-block;
+  margin-bottom: 20px;
+  padding: 12px 20px;
+  background: linear-gradient(135deg, #111, #333);
+  color: #fff;
+  text-decoration: none;
+  border-radius: 10px;
+  font-weight: 600;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+  transition: all 0.25s ease;
+  width:20%;
+}
+
+.sheet-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.35);
+}
+
+
+/* ===================== STICKY FOOTER ===================== */
+html, body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-page {
+  flex: 1 0 auto;
+}
+
+.footer {
+  flex-shrink: 0;
+  margin-top: 0;
+  padding: 1.5rem 1rem;
+  background: linear-gradient(135deg, #0d0d0d, #1a1a1a);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  text-align: center;
+}
+
+/* ===================== TABLE SCROLL ON SMALL SCREENS ===================== */
+@media (max-width: 768px) {
+  .admin-table {
+    display: block;
+    overflow-x: auto;
+  }
+  .admin-table th, .admin-table td {
+    white-space: nowrap;
+  }
+}
