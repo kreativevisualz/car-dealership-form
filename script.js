@@ -63,8 +63,39 @@ function prevStep() {
 
 document.getElementById('multiStepForm').addEventListener('submit', function (e) {
   e.preventDefault();
-  currentStep = steps.length - 1;
-  showStep(currentStep);
+
+  const submitBtn = e.target.querySelector('button[type="submit"]');
+  submitBtn.textContent = "Sending...";
+  submitBtn.disabled = true;
+
+  // 1. Convert Form Data to a JSON Object
+  const formData = new FormData(this);
+  const obj = {};
+  formData.forEach((value, key) => {
+    obj[key] = value;
+  });
+
+  // 2. Send as JSON string
+  fetch('YOUR_NEW_DEPLOYMENT_URL_HERE', {
+    method: 'POST',
+    mode: 'no-cors', // Required for Google Apps Script redirects
+    cache: 'no-cache',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(obj)
+  })
+  .then(() => {
+    // Since 'no-cors' doesn't return a readable response, we assume success if no error
+    currentStep = steps.length - 1;
+    showStep(currentStep);
+  })
+  .catch(error => {
+    console.error('Error:', error);
+    alert('Submission failed. Please try again.');
+    submitBtn.textContent = "Submit Application";
+    submitBtn.disabled = false;
+  });
 });
 
 function resetForm() {
