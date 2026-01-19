@@ -64,36 +64,42 @@ function prevStep() {
 document.getElementById('multiStepForm').addEventListener('submit', function (e) {
   e.preventDefault();
 
+  // 1. Visual feedback for the user
   const submitBtn = e.target.querySelector('button[type="submit"]');
-  submitBtn.textContent = "Sending...";
+  const originalText = submitBtn.textContent;
+  submitBtn.textContent = "Sending Application...";
   submitBtn.disabled = true;
 
-  // 1. Convert Form Data to a JSON Object
+  // 2. Prepare the data as a JSON object
   const formData = new FormData(this);
-  const obj = {};
+  const dataObject = {};
   formData.forEach((value, key) => {
-    obj[key] = value;
+    dataObject[key] = value;
   });
 
-  // 2. Send as JSON string
-  fetch('YOUR_NEW_DEPLOYMENT_URL_HERE', {
+  // 3. Send the data to your Google Apps Script
+  // REPLACE THE URL BELOW WITH YOUR ACTUAL DEPLOYMENT URL
+  const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzL1vgwf-3PN_FwaSPmmlRUDmrx1ZrSCgx360OurtGtAtKGXGQfEuY2bLBSVEjg9kAI/exec';
+
+  fetch(GOOGLE_SCRIPT_URL, {
     method: 'POST',
-    mode: 'no-cors', // Required for Google Apps Script redirects
+    mode: 'no-cors', // Essential for Google Apps Script
     cache: 'no-cache',
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify(obj)
+    body: JSON.stringify(dataObject)
   })
   .then(() => {
-    // Since 'no-cors' doesn't return a readable response, we assume success if no error
+    // 4. On success, show the success screen
     currentStep = steps.length - 1;
     showStep(currentStep);
   })
   .catch(error => {
-    console.error('Error:', error);
-    alert('Submission failed. Please try again.');
-    submitBtn.textContent = "Submit Application";
+    // 5. On error, let the user try again
+    console.error('Submission Error:', error);
+    alert('There was a problem submitting your application. Please try again.');
+    submitBtn.textContent = originalText;
     submitBtn.disabled = false;
   });
 });
@@ -138,37 +144,3 @@ loginAdmin.addEventListener('click', () => {
 
 
 
-// Replace the entire bottom section of your script.js with this:
-
-document.getElementById('multiStepForm').addEventListener('submit', function (e) {
-  e.preventDefault(); // Stop page from refreshing
-
-  // 1. Get the submit button to show "Processing..."
-  const submitBtn = e.target.querySelector('button[type="submit"]');
-  const originalBtnText = submitBtn.textContent;
-  submitBtn.textContent = "Sending...";
-  submitBtn.disabled = true;
-
-  // 2. Capture the Form Data (using the correct ID)
-  const formData = new FormData(this);
-
-  // 3. Send to Google Apps Script
-  fetch('https://script.google.com/macros/s/AKfycbzL1vgwf-3PN_FwaSPmmlRUDmrx1ZrSCgx360OurtGtAtKGXGQfEuY2bLBSVEjg9kAI/exec', {
-    method: 'POST',
-    body: formData
-  })
-  .then(response => {
-    console.log('Success:', response);
-    // 4. Move to the Success Step only after successful fetch
-    currentStep = steps.length - 1;
-    showStep(currentStep);
-  })
-  .catch(error => {
-    console.error('Error:', error);
-    alert('Something went wrong. Please check your internet connection and try again.');
-    submitBtn.textContent = originalBtnText;
-    submitBtn.disabled = false;
-  });
-});
-
-// You can delete the old function submitForm() {} entirely
