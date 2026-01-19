@@ -107,21 +107,37 @@ loginAdmin.addEventListener('click', () => {
 
 
 
-function submitForm() {
-  const form = document.getElementById('vehicleForm');
-  const formData = new FormData(form);
+// Replace the entire bottom section of your script.js with this:
 
+document.getElementById('multiStepForm').addEventListener('submit', function (e) {
+  e.preventDefault(); // Stop page from refreshing
+
+  // 1. Get the submit button to show "Processing..."
+  const submitBtn = e.target.querySelector('button[type="submit"]');
+  const originalBtnText = submitBtn.textContent;
+  submitBtn.textContent = "Sending...";
+  submitBtn.disabled = true;
+
+  // 2. Capture the Form Data (using the correct ID)
+  const formData = new FormData(this);
+
+  // 3. Send to Google Apps Script
   fetch('https://script.google.com/macros/s/AKfycbzL1vgwf-3PN_FwaSPmmlRUDmrx1ZrSCgx360OurtGtAtKGXGQfEuY2bLBSVEjg9kAI/exec', {
     method: 'POST',
     body: formData
   })
-  .then(response => response.text())
-  .then(data => {
-    console.log('Success:', data);
-    showStep(steps.length - 1); // show success/outro page
+  .then(response => {
+    console.log('Success:', response);
+    // 4. Move to the Success Step only after successful fetch
+    currentStep = steps.length - 1;
+    showStep(currentStep);
   })
   .catch(error => {
     console.error('Error:', error);
-    alert('Something went wrong. Please try again.');
+    alert('Something went wrong. Please check your internet connection and try again.');
+    submitBtn.textContent = originalBtnText;
+    submitBtn.disabled = false;
   });
-}
+});
+
+// You can delete the old function submitForm() {} entirely
